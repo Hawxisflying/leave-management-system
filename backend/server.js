@@ -12,16 +12,12 @@ const app = express();
 
 app.use(express.json());
 
-app.use(
-    cors({
-        origin: [
-            "http://localhost:5173",
-            "https://leave-management-system-p42f.vercel.app",
-        ],
-        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-        allowedHeaders: ["Content-Type", "Authorization"],
-    })
-);
+app.use(cors({
+    origin: "https://leave-management-system-p42f.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: false
+}));
 
 
 app.use("/api/auth", authRoutes);
